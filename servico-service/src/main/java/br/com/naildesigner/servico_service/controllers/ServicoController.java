@@ -1,0 +1,42 @@
+package br.com.naildesigner.servico_service.controllers;
+
+import br.com.naildesigner.servico_service.dtos.ServicoDTO;
+import br.com.naildesigner.servico_service.services.ServicoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/servicos")
+public class ServicoController {
+
+    @Autowired
+    private ServicoService servicoService;
+
+    @PostMapping
+    public ServicoDTO salvar(@RequestBody ServicoDTO dto) {
+        return servicoService.salvar(dto);
+    }
+
+    @GetMapping
+    public List<ServicoDTO> listar() {
+        return servicoService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public ServicoDTO buscarPorId(@PathVariable Long id) {
+        return servicoService.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public ServicoDTO atualizar(@PathVariable Long id, @RequestBody ServicoDTO dto) {
+        dto.setId(id);
+        return servicoService.atualizar(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        servicoService.excluir(id);
+    }
+}
