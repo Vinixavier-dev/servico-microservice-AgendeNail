@@ -1,11 +1,19 @@
 package br.com.naildesigner.servico_service.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.naildesigner.servico_service.dtos.ServicoDTO;
 import br.com.naildesigner.servico_service.services.ServicoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/servicos")
@@ -38,5 +46,10 @@ public class ServicoController {
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable Long id) {
         servicoService.excluir(id);
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Olá do Serviço de Serviços!";
     }
 }

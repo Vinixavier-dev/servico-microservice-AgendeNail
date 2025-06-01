@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: servico-service  # Nome deve bater com a rota no Gateway
+
+    eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # URL do Eureka
+  instance:
+    prefer-ip-address: true  # Usa o IP em vez do hostname
